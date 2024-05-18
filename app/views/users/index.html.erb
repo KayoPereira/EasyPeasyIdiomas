@@ -1,0 +1,16 @@
+<table class="rwd-table">
+  <tr>
+    <th>Nome</th>
+    <th>Número identificador</th>
+    <th>Telefone</th>
+    <th>Aluno?</th>
+  </tr>
+  <%= @users.each do |user| %>
+    <tr>
+      <td data-th="Nome"><%= "#{user.first_name} #{user.last_name}" %></td>
+      <td data-th="Número identificador"><%= "#{user.identification_number}" %></td>
+      <td data-th="Telefone"><%= "#{user.phone}" %></td>
+      <td data-th="Aluno?"><%= user.role == "student" ? "Sim" : "Não" %></td>
+    </tr>
+  <% end %>
+</table>

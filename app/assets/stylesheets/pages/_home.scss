@@ -1,1 +1,51 @@
 // Specific CSS for your home-page
+// "#000c44" AZUL
+// "#fd009f"
+
+.banner {
+  background-image: image-url('banner2.jpg');
+  height: 600px;
+}
+
+.banner-text {
+  // background-color: rgba(0,0,0, 0.3);
+  border-radius: 10px;
+  width: 40%;
+  margin: 180px 0 0 200px;
+
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #fd009f;
+  }
+
+  h4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+    color: #000c44;
+  }
+
+  .banner-btn {
+    width: 200px;
+    background-color: #fd009f;
+    border-radius: 10px;
+    color: #000c44;
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    margin-top: 30px;
+    &:hover {
+      background-color: #000c44;
+      color: #fd009f;
+    }
+  }
+}
+
+.student_payday {
+  width: 40%;
+}
+
+.student_language {
+  width: 50%;
+}

@@ -1,0 +1,29 @@
+<style>
+  /* .new_student form class */
+  .new_student {
+    width: 100%;
+  }
+</style>
+<div class="col-md-12 d-flex flex-column align-items-center">
+  <%= simple_form_for student do |f| %>
+    <%= f.input :full_name, label: 'Nome completo' %>
+    <%= f.input :cpf, label: "CPF" %>
+    <%= f.input :birthdate, as: :string, input_html: { id: 'birthdate_input' }, label: "Data de nascimento" %>
+    <div class="d-flex justify-content-between">
+      <%= f.input :payday, collection: Student.paydays.values, label: "Melhor dia de pagamento" %>
+      <%# f.input :language, collection: Student.languages.values, label: "Idioma desejado" %>
+    </div>
+    <div class="d-flex justify-content-end w-100">
+      <%= f.button :submit, class: "btn btn-flat banner-btn", value: "Escolher o plano" %>
+    </div>
+  <% end %>
+</div>
+
+<script src="pikaday.js"></script>
+<script>
+  var picker = new Pikaday({ 
+                            field: document.getElementById('birthdate_input'),
+                            format: 'dd/mm/yyyy',
+                            yearRange: [1950, <%= Date.today.year %>]
+                          });
+</script>

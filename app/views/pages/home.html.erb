@@ -1,2 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<%= render "banner" %>
+
+<div class="row d-flex justify-content-evenly" style="margin-right: 0;">
+  <%= render "timeline" %>
+  <div class="p-4 bg-white col-lg-3" style="height: 450px; border-radius: 10px;">
+    <%= render partial: 'form_apply', locals: { student: @student } %>
+  </div>
+</div>
+
+<%= render "shared/footer" %>
