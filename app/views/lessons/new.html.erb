@@ -1,0 +1,17 @@
+<div class="container">
+  <h1 class="title-text">Criar uma nova aula</h1>
+
+  <%= simple_form_for @lesson do |f| %>
+    <div class="row student-text">
+      <%= f.input :day_hour %>
+    </div>
+    <div class="row student-text">
+      <%= f.input :student_id %>
+    </div>
+    <div class="row student-text">
+      <%= f.input :teacher_id %>
+    </div>
+    <%= f.submit class: 'btn btn-success' %>
+    <%= link_to 'Back', root_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

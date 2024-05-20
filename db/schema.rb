@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_17_233721) do
+ActiveRecord::Schema[7.0].define(version: 2024_05_18_135001) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,13 +20,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_233721) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "lesson_comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "lesson_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["lesson_id"], name: "index_lesson_comments_on_lesson_id"
+  end
+
   create_table "lessons", force: :cascade do |t|
-    t.string "day"
-    t.time "hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "student_id"
     t.bigint "teacher_id"
+    t.datetime "day_hour"
     t.index ["student_id"], name: "index_lessons_on_student_id"
     t.index ["teacher_id"], name: "index_lessons_on_teacher_id"
   end
@@ -44,14 +51,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_233721) do
     t.integer "monthly_lessons"
     t.string "language"
     t.string "level"
-    t.string "current_month"
     t.integer "class_given", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cpf"
     t.bigint "user_id"
-    t.string "full_name"
-    t.date "birthdate"
     t.string "payday"
     t.index ["user_id"], name: "index_students_on_user_id"
   end
@@ -65,6 +68,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_233721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "role"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "identification_number"
+    t.string "phone"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -77,6 +84,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_17_233721) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "lesson_comments", "lessons"
   add_foreign_key "lessons", "users", column: "student_id"
   add_foreign_key "lessons", "users", column: "teacher_id"
   add_foreign_key "payments", "students"

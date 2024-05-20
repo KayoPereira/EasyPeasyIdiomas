@@ -11,4 +11,10 @@ Rails.application.routes.draw do
     resources :payments, only: %i[new create destroy]
     get '/payments', to: "payments#student_index", as: :student_payment_index
   end
+
+  resources :lessons do
+    resources :lesson_comments, only: %i[show new create]
+  end
+
+  get "users", to: "users#index"
 end

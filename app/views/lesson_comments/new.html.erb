@@ -1,0 +1,11 @@
+<div class="container">
+  <h1 class="title-text">Criando o resumo da aula...</h1>
+
+  <%= simple_form_for [@lesson, @lesson_comment] do |f| %>
+    <div class="row student-text">
+      <%= f.input :content %>
+    </div>
+    <%= f.submit class: 'btn btn-success' %>
+    <%= link_to 'Back', lessons_path, class: "btn btn-primary" %>
+  <% end %>
+</div>

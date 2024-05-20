@@ -1,0 +1,18 @@
+<% @teachers.each do |teacher| %>
+  <ol>
+    <li><%= User.find(teacher).first_name %></li>
+  </ol>
+  <ul>
+    <% @lessons.where(teacher_id: teacher).each do |lesson| %>
+      <li>
+        <%= lesson.student.first_name %>
+        <%= lesson.day_hour.strftime("%d/%m/%Y %H:%M") %>
+        <% if lesson.lesson_comment.present? %>
+          <%= link_to "Resumo da aula", lesson_lesson_comment_path(lesson.id, lesson.lesson_comment.id) %>
+        <% else %>
+          <%= link_to "Criar resumo", new_lesson_lesson_comment_path(lesson.id) %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
